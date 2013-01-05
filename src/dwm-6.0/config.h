@@ -48,10 +48,16 @@ static const Layout layouts[] = {
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "urxvt", "-pe", "tabbed", NULL };
+static const char *dmenucmd[]   = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+static const char *termcmd[]    = { "urxvt", "-pe", "tabbed", NULL };
 static const char *screenshot[] = { "scrot", "-e", scrcmd, NULL };
-static const char *mpcnext[] = { "mpc", "next", NULL };
+static const char *mpcnext[]    = { "mpc", "next", NULL };
+static const char *mpcprev[]    = { "mpc", "prev", NULL };
+static const char *mpctoggle[]  = { "mpc", "toggle", NULL };
+static const char *ncmpcpp[]    = { "urxvt", "-e", "ncmpcpp", NULL };
+static const char *browser[]    = { "firefox", NULL };
+static const char *mail[]       = { "thunderbird", NULL };
+static const char *chat[]       = { "pidgin", NULL } ;
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -81,6 +87,13 @@ static Key keys[] = {
 	{ MODKEY,                       XK_Right,  shiftview,      {.i = +1 } },
 	{ MODKEY,                       XK_Left,   shiftview,      {.i = -1 } },
 	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
+	{ 0,                            0x1008ff17,spawn,          {.v = mpcnext } },
+	{ 0,                            0x1008ff16,spawn,          {.v = mpcprev } },
+	{ 0,                            0x1008ff14,spawn,          {.v = mpctoggle } },
+	{ 0,                            0x1008ff81,spawn,          {.v = ncmpcpp } },
+	{ 0,                            0x1008ff18,spawn,          {.v = browser } },
+	{ 0,                            0x1008ff19,spawn,          {.v = mail } },
+	{ 0,                            0x1008ff1b,spawn,          {.v = chat } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
