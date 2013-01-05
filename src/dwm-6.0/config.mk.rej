@@ -1,0 +1,11 @@
+--- config.mk	Sun Nov 18 17:52:42 2012 +0100
++++ config.mk	Sun Nov 25 00:43:08 2012 +0200
+@@ -16,7 +16,7 @@
+ 
+ # includes and libs
+ INCS = -I${X11INC}
+-LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS}
++LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS} -lmpdclient
+ 
+ # flags
+ CPPFLAGS = -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}

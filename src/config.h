@@ -1,0 +1,1 @@
+/home/hubi/abs/dwm/config.h
