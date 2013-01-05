@@ -8,6 +8,7 @@ static const char normfgcolor[]     = "#bbbbbb";
 static const char selbordercolor[]  = "#005577";
 static const char selbgcolor[]      = "#005577";
 static const char selfgcolor[]      = "#eeeeee";
+static const char scrcmd[]          = "mv $f ~/entertainment/pictures/screenshots/ 2>/dev/null";
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const Bool showbar           = True;     /* False means no bar */
@@ -48,8 +49,9 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[] = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
-static const char *termcmd[]  = { "urxvt", "-pe", "tabbed" };
-//static const char *termcmd[]  = { "uxterm", NULL };
+static const char *termcmd[]  = { "urxvt", "-pe", "tabbed", NULL };
+static const char *screenshot[] = { "scrot", "-e", scrcmd, NULL };
+static const char *mpcnext[] = { "mpc", "next", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -74,10 +76,11 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
 	{ MODKEY,                       XK_comma,  focusmon,       {.i = -1 } },
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
-	{ MODKEY,                       XK_Right,  shiftview,      {.i = +1 } },
-	{ MODKEY,                       XK_Left,   shiftview,      {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY,                       XK_Right,  shiftview,      {.i = +1 } },
+	{ MODKEY,                       XK_Left,   shiftview,      {.i = -1 } },
+	{ 0,                            XK_Print,  spawn,          {.v = screenshot } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -105,7 +108,7 @@ static Button buttons[] = {
 	{ ClkTagBar,            0,              Button3,        toggleview,     {0} },
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
-	{ ClkTagBar,            0,              Button4,        shiftview,      {.i = -1 } },
-	{ ClkTagBar,            0,              Button5,        shiftview,      {.i = +1 } },
+	{ ClkTagBar,            0,              Button4,        shiftview,      {.i = +1 } },
+	{ ClkTagBar,            0,              Button5,        shiftview,      {.i = -1 } },
 };
 
