@@ -50,7 +50,10 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *dmenucmd[]   = { "dmenu_run", "-fn", font, "-nb", normbgcolor, "-nf", normfgcolor, "-sb", selbgcolor, "-sf", selfgcolor, NULL };
+/*
 static const char *termcmd[]    = { "urxvt", "-pe", "tabbed", NULL };
+*/
+static const char *termcmd[]    = { "urxvt", "-pe", "tabbed", "-fn", "xft:Inconsolata for Powerline\\-dz:style=dz:size=11.5", "-fb", "xft:Inconsolata for Powerline\\-dz:bold:size=11.5", "-fi", "xft:Inconsolata for Powerline\\-dz:italic:size=11.5", "-fbi", "xft:Inconsolata for Powerline\\-dz:bold:italic:size=11.5", NULL };
 static const char *screenshot[] = { "scrot", "-e", scrcmd, NULL };
 static const char *mpcnext[]    = { "mpc", "next", NULL };
 static const char *mpcprev[]    = { "mpc", "prev", NULL };
